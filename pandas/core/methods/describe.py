@@ -226,9 +226,9 @@ def describe_numeric_1d(series: Series, percentiles: Sequence[float]) -> Series:
         The percentiles to include in the output.
     """
     from pandas import Series
-    
+
     formatted_percentiles = format_percentiles(percentiles)
-    
+
     stat_index = ["count", "mean", "std", "min"] + formatted_percentiles + ["max"]
     d = (
         [series.count(), series.mean(), series.std(), series.min()]

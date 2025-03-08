@@ -1133,9 +1133,9 @@ class TestParquetPyArrow(Base):
             index=pd.Index(["a", "b"], dtype=dtype),
             columns=pd.Index(
                 ["a"],
-                dtype=object
-                if pa_version_under19p0 and not using_infer_string
-                else dtype,
+                dtype=(
+                    object if pa_version_under19p0 and not using_infer_string else dtype
+                ),
             ),
         )
         tm.assert_frame_equal(result, expected)

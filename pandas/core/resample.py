@@ -2157,8 +2157,10 @@ class TimeGrouper(Grouper):
         fill_method=None,
         limit: int | None = None,
         convention: Literal["start", "end", "e", "s"] | None = None,
-        origin: Literal["epoch", "start", "start_day", "end", "end_day"]
-        | TimestampConvertibleTypes = "start_day",
+        origin: (
+            Literal["epoch", "start", "start_day", "end", "end_day"]
+            | TimestampConvertibleTypes
+        ) = "start_day",
         offset: TimedeltaConvertibleTypes | None = None,
         group_keys: bool = False,
         **kwargs,
@@ -2172,13 +2174,10 @@ class TimeGrouper(Grouper):
         if convention not in {None, "start", "end", "e", "s"}:
             raise ValueError(f"Unsupported value {convention} for `convention`")
 
-        if (
-            (key is None and obj is not None and isinstance(obj.index, PeriodIndex))  # type: ignore[attr-defined]
-            or (
-                key is not None
-                and obj is not None
-                and getattr(obj[key], "dtype", None) == "period"  # type: ignore[index]
-            )
+        if (key is None and obj is not None and isinstance(obj.index, PeriodIndex)) or (  # type: ignore[attr-defined]
+            key is not None
+            and obj is not None
+            and getattr(obj[key], "dtype", None) == "period"  # type: ignore[index]
         ):
             freq = to_offset(freq, is_period=True)
         else:

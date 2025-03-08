@@ -186,17 +186,21 @@ def to_dict(
     if orient == "list":
         object_dtype_indices_as_set: set[int] = set(box_native_indices)
         box_na_values = (
-            lib.no_default
-            if not isinstance(col_dtype, BaseMaskedDtype)
-            else libmissing.NA
+            (
+                lib.no_default
+                if not isinstance(col_dtype, BaseMaskedDtype)
+                else libmissing.NA
+            )
             for col_dtype in df.dtypes.values
         )
         return into_c(
             (
                 k,
-                list(map(maybe_box_native, v.to_numpy(na_value=box_na_value)))
-                if i in object_dtype_indices_as_set
-                else list(map(maybe_box_native, v.to_numpy())),
+                (
+                    list(map(maybe_box_native, v.to_numpy(na_value=box_na_value)))
+                    if i in object_dtype_indices_as_set
+                    else list(map(maybe_box_native, v.to_numpy()))
+                ),
             )
             for i, (box_na_value, (k, v)) in enumerate(zip(box_na_values, df.items()))
         )
@@ -269,9 +273,11 @@ def to_dict(
                 (
                     t[0],
                     {
-                        column: maybe_box_native(v)
-                        if i in object_dtype_indices_as_set
-                        else v
+                        column: (
+                            maybe_box_native(v)
+                            if i in object_dtype_indices_as_set
+                            else v
+                        )
                         for i, (column, v) in enumerate(zip(columns, t[1:]))
                     },
                 )

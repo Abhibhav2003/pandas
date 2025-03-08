@@ -369,12 +369,9 @@ def read_excel(
     header: int | Sequence[int] | None = ...,
     names: SequenceNotStr[Hashable] | range | None = ...,
     index_col: int | str | Sequence[int] | None = ...,
-    usecols: int
-    | str
-    | Sequence[int]
-    | Sequence[str]
-    | Callable[[HashableT], bool]
-    | None = ...,
+    usecols: (
+        int | str | Sequence[int] | Sequence[str] | Callable[[HashableT], bool] | None
+    ) = ...,
     dtype: DtypeArg | None = ...,
     engine: Literal["xlrd", "openpyxl", "odf", "pyxlsb", "calamine"] | None = ...,
     converters: dict[str, Callable] | dict[int, Callable] | None = ...,
@@ -406,12 +403,9 @@ def read_excel(
     header: int | Sequence[int] | None = ...,
     names: SequenceNotStr[Hashable] | range | None = ...,
     index_col: int | str | Sequence[int] | None = ...,
-    usecols: int
-    | str
-    | Sequence[int]
-    | Sequence[str]
-    | Callable[[HashableT], bool]
-    | None = ...,
+    usecols: (
+        int | str | Sequence[int] | Sequence[str] | Callable[[HashableT], bool] | None
+    ) = ...,
     dtype: DtypeArg | None = ...,
     engine: Literal["xlrd", "openpyxl", "odf", "pyxlsb", "calamine"] | None = ...,
     converters: dict[str, Callable] | dict[int, Callable] | None = ...,
@@ -443,12 +437,9 @@ def read_excel(
     header: int | Sequence[int] | None = 0,
     names: SequenceNotStr[Hashable] | range | None = None,
     index_col: int | str | Sequence[int] | None = None,
-    usecols: int
-    | str
-    | Sequence[int]
-    | Sequence[str]
-    | Callable[[HashableT], bool]
-    | None = None,
+    usecols: (
+        int | str | Sequence[int] | Sequence[str] | Callable[[HashableT], bool] | None
+    ) = None,
     dtype: DtypeArg | None = None,
     engine: Literal["xlrd", "openpyxl", "odf", "pyxlsb", "calamine"] | None = None,
     converters: dict[str, Callable] | dict[int, Callable] | None = None,

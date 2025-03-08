@@ -656,12 +656,16 @@ def test_groupby_raises_category_on_category(
         "diff": (TypeError, "unsupported operand type"),
         "ffill": (None, ""),
         "first": (None, ""),
-        "idxmax": (ValueError, "empty group due to unobserved categories")
-        if empty_groups
-        else (None, ""),
-        "idxmin": (ValueError, "empty group due to unobserved categories")
-        if empty_groups
-        else (None, ""),
+        "idxmax": (
+            (ValueError, "empty group due to unobserved categories")
+            if empty_groups
+            else (None, "")
+        ),
+        "idxmin": (
+            (ValueError, "empty group due to unobserved categories")
+            if empty_groups
+            else (None, "")
+        ),
         "last": (None, ""),
         "max": (None, ""),
         "mean": (TypeError, "category dtype does not support aggregation 'mean'"),

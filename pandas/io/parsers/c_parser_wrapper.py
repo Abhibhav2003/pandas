@@ -293,9 +293,11 @@ class CParserWrapper(ParserBase):
                 if self._should_parse_dates(i):
                     values = date_converter(
                         values,
-                        col=self.index_names[i]
-                        if self.index_names is not None
-                        else None,
+                        col=(
+                            self.index_names[i]
+                            if self.index_names is not None
+                            else None
+                        ),
                         dayfirst=self.dayfirst,
                         cache_dates=self.cache_dates,
                         date_format=self.date_format,

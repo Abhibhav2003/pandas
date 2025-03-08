@@ -1858,9 +1858,11 @@ class TestDataFrameConstructors:
         expected = Series(
             [np.dtype("int64")]
             + [
-                np.dtype(objectname)
-                if not using_infer_string
-                else pd.StringDtype(na_value=np.nan)
+                (
+                    np.dtype(objectname)
+                    if not using_infer_string
+                    else pd.StringDtype(na_value=np.nan)
+                )
             ]
             * 2
             + [np.dtype("M8[s]"), np.dtype("M8[us]")],
@@ -1885,9 +1887,11 @@ class TestDataFrameConstructors:
             [np.dtype("float64")]
             + [np.dtype("int64")]
             + [
-                np.dtype("object")
-                if not using_infer_string
-                else pd.StringDtype(na_value=np.nan)
+                (
+                    np.dtype("object")
+                    if not using_infer_string
+                    else pd.StringDtype(na_value=np.nan)
+                )
             ]
             + [np.dtype("float64")]
             + [np.dtype(intname)],
@@ -1911,9 +1915,11 @@ class TestDataFrameConstructors:
             [np.dtype("float64")]
             + [np.dtype("int64")]
             + [
-                np.dtype("object")
-                if not using_infer_string
-                else pd.StringDtype(na_value=np.nan)
+                (
+                    np.dtype("object")
+                    if not using_infer_string
+                    else pd.StringDtype(na_value=np.nan)
+                )
             ]
             + [np.dtype("float64")]
             + [np.dtype(intname)],
@@ -2139,9 +2145,11 @@ class TestDataFrameConstructors:
             [
                 np.dtype("int64"),
                 np.dtype("float64"),
-                np.dtype("object")
-                if not using_infer_string
-                else pd.StringDtype(na_value=np.nan),
+                (
+                    np.dtype("object")
+                    if not using_infer_string
+                    else pd.StringDtype(na_value=np.nan)
+                ),
                 np.dtype("datetime64[us]"),
                 np.dtype("float64"),
             ],

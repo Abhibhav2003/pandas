@@ -57,9 +57,11 @@ def test_concat_series_between_empty_and_tzaware_series(using_infer_string):
         data=[
             (0.0, None),
         ],
-        index=[tzaware_time]
-        if using_infer_string
-        else pd.Index([tzaware_time], dtype=object),
+        index=(
+            [tzaware_time]
+            if using_infer_string
+            else pd.Index([tzaware_time], dtype=object)
+        ),
         columns=[0, 1],
         dtype=float,
     )

@@ -245,9 +245,11 @@ class ParserBase:
         # Clean the column names (if we have an index_col).
         if len(ic):
             col_names = [
-                r[ic[0]]
-                if ((r[ic[0]] is not None) and r[ic[0]] not in self.unnamed_cols)
-                else None
+                (
+                    r[ic[0]]
+                    if ((r[ic[0]] is not None) and r[ic[0]] not in self.unnamed_cols)
+                    else None
+                )
                 for r in header
             ]
         else:

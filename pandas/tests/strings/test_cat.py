@@ -317,9 +317,11 @@ def test_str_cat_align_mixed_inputs(join_type):
     rhs_idx = (
         t.index.intersection(s.index)
         if join_type == "inner"
-        else t.index.union(s.index)
-        if join_type == "outer"
-        else t.index.append(s.index.difference(t.index))
+        else (
+            t.index.union(s.index)
+            if join_type == "outer"
+            else t.index.append(s.index.difference(t.index))
+        )
     )
 
     expected = expected_outer.loc[s.index.join(rhs_idx, how=join_type)]

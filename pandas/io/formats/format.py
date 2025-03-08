@@ -792,9 +792,11 @@ class DataFrameFormatter:
             fmt_columns = columns._format_flat(include_name=False)
             str_columns = [
                 [
-                    " " + x
-                    if not self._get_formatter(i) and is_numeric_dtype(dtype)
-                    else x
+                    (
+                        " " + x
+                        if not self._get_formatter(i) and is_numeric_dtype(dtype)
+                        else x
+                    )
                 ]
                 for i, (x, dtype) in enumerate(zip(fmt_columns, self.frame.dtypes))
             ]
@@ -1577,12 +1579,12 @@ def format_percentiles(
         raise ValueError("percentiles should all be in the interval [0,1]")
 
     # Fix for issue #60550
-    if len(percentiles) > 0 :
-       percentiles = 100 * percentiles 
+    if len(percentiles) > 0:
+        percentiles = 100 * percentiles
 
-    else : 
-       percentiles = np.array([])
-    
+    else:
+        percentiles = np.array([])
+
     prec = get_precision(percentiles)
     percentiles_round_type = percentiles.round(prec).astype(int)
 
@@ -1604,7 +1606,7 @@ def format_percentiles(
 def get_precision(array: np.ndarray | Sequence[float]) -> int:
     # Fix for issue #60550
     if array.size == 0:
-       return 0
+        return 0
 
     to_begin = array[0] if array[0] > 0 else None
     to_end = 100 - array[-1] if array[-1] < 100 else None

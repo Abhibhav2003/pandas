@@ -1419,13 +1419,15 @@ class TestToLatexMultiindex:
             .map_index(lambda v: "textbf:--rwrap;", axis="columns")
             .to_latex()
         )
-        expected = _dedent(r"""
+        expected = _dedent(
+            r"""
             \begin{tabular}{rr}
             \textbf{A} & \textbf{B} \\
             1 & 4 \\
             2 & 5 \\
             \end{tabular}
-            """)
+            """
+        )
         assert result == expected
 
     def test_to_latex_multiindex_format_triple_index_two_hidden(self):
@@ -1448,7 +1450,8 @@ class TestToLatexMultiindex:
             .map_index(lambda v: "textbf:--rwrap;", axis="columns")
             .to_latex()
         )
-        expected = _dedent(r"""
+        expected = _dedent(
+            r"""
             \begin{tabular}{lrrr}
              & \textbf{C1} & \textbf{C2} & \textbf{C3} \\
             Level 2 &  &  &  \\
@@ -1457,7 +1460,8 @@ class TestToLatexMultiindex:
             y & 0 & 0 & 0 \\
             y & 0 & 0 & 0 \\
             \end{tabular}
-            """)
+            """
+        )
         assert result == expected
 
     def test_to_latex_multiindex_format_triple_index_all_hidden(self):
@@ -1480,7 +1484,8 @@ class TestToLatexMultiindex:
             .map_index(lambda v: "textbf:--rwrap;", axis="columns")
             .to_latex()
         )
-        expected = _dedent(r"""
+        expected = _dedent(
+            r"""
             \begin{tabular}{rrr}
             \textbf{C1} & \textbf{C2} & \textbf{C3} \\
             0 & 0 & 0 \\
@@ -1488,5 +1493,6 @@ class TestToLatexMultiindex:
             0 & 0 & 0 \\
             0 & 0 & 0 \\
             \end{tabular}
-            """)
+            """
+        )
         assert result == expected

@@ -74,16 +74,18 @@ def to_timedelta(
 
 
 def to_timedelta(
-    arg: str
-    | int
-    | float
-    | timedelta
-    | list
-    | tuple
-    | range
-    | ArrayLike
-    | Index
-    | Series,
+    arg: (
+        str
+        | int
+        | float
+        | timedelta
+        | list
+        | tuple
+        | range
+        | ArrayLike
+        | Index
+        | Series
+    ),
     unit: UnitChoices | None = None,
     errors: DateTimeErrorChoices = "raise",
 ) -> Timedelta | TimedeltaIndex | Series | NaTType | Any:

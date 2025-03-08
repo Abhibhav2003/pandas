@@ -15,10 +15,12 @@ def __getattr__(name: str) -> Any: ...  # incomplete
 def jit(signature_or_function: F) -> F: ...
 @overload
 def jit(
-    signature_or_function: str
-    | list[str]
-    | numba.core.types.abstract.Type
-    | list[numba.core.types.abstract.Type] = ...,
+    signature_or_function: (
+        str
+        | list[str]
+        | numba.core.types.abstract.Type
+        | list[numba.core.types.abstract.Type]
+    ) = ...,
     locals: dict = ...,  # TODO: Mapping of local variable names to Numba types
     cache: bool = ...,
     pipeline_class: numba.compiler.CompilerBase = ...,
